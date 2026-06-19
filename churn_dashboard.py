@@ -9,10 +9,11 @@ st.title("🚨 CHURN SIGNAL · TELCO COHORT")
 
 # Load data
 @st.cache_data
+
 def load_data():
     # Load from relative paths inside the project
-    customers = pd.read_csv("attachments/churn_customers.csv")
-    predictions = pd.read_csv("attachments/churn_predictions.csv")
+    customers = pd.read_csv("/workspaces/Churn-project-/churn_customers.csv")
+    predictions = pd.read_csv("/workspaces/Churn-project-/churn_predictions.csv")
     return customers, predictions
 
 customers_df, predictions_df = load_data()
@@ -25,7 +26,7 @@ conn = sqlite3.connect(':memory:')
 merged_df.to_sql('customer_churn_predictions', conn, index=False, if_exists='replace')
 
 # Load SQL queries
-with open("attachments/churn_queries.sql", "r") as f:
+with open("/workspaces/Churn-project-/churn_queries.sql", "r") as f:
     sql_content = f.read()
 
 # Sidebar
