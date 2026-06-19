@@ -4,10 +4,9 @@
 --   SeniorCitizen, risk_score, risk_band)
 
 -- top_20_highest_risk
-SELECT customerID, tenure, Contract, MonthlyCharges, ROUND(risk_score, 3) AS risk_score
+SELECT TOP 20 customerID, tenure, Contract, MonthlyCharges, ROUND(risk_score, 3) AS risk_score
         FROM customer_churn_predictions
-        ORDER BY risk_score DESC
-        LIMIT 20;
+        ORDER BY risk_score DESC;
 
 -- churn_rate_by_contract
 SELECT Contract,
